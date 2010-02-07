@@ -94,7 +94,7 @@ class HackerNewsAPI:
 		domain = source[domainStart:domainEnd]
 		# Check for "Ask HN" links.
 		if domain[0] == '=':
-			domain = "http://news.ycombinator.com"
+			return "http://news.ycombinator.com"
 		return "http://" + domain[1:len(domain)-2]
 		
 	def getStoryTitle(self, source):
@@ -297,3 +297,11 @@ class HackerNewsUser:
 		karmaStart = source.find('<td valign=top>karma:</td><td>') + 30
 		karmaEnd = source.find('</td>', karmaStart)
 		self.karma = int(source[karmaStart:karmaEnd])
+
+hn = HackerNewsAPI()
+stories = hn.getNewestStories()
+
+for s in stories:
+	s.printDetails()
+
+
