@@ -1,0 +1,82 @@
+#hn-api
+
+hn-api is a simple, ad-hoc Python API for [Hacker News][hn]. I say "ad-hoc" because it is unofficial, unauthorised and works by screen-scraping and slicing-and-dicing HTML. I say "simple" because it is in its infancy.
+
+The guts of hn-api were part of my [hnsh][] project, but I decided to pull the API stuff out and make it its own project so that other people could use the pseudo-API I'd created.
+
+[hn]: http://news.ycombinator.com
+[hnsh]: http://github.com/scottjacksonx/hnsh/
+
+##Documentation
+
+There are three classes:
+
+- `HackerNewsAPI` -- The main class for turning the source code from HN into Python objects.
+- `HackerNewsStory` -- The class representing a story on HN.
+- `HackerNewsUser` -- The class representing an HN user.
+
+###HackerNewsStory
+
+Attributes:
+
+- `id` -- The Hacker News ID of a story.
+- `number` -- What rank the story is on HN.
+- `title` -- The title of the story.
+- `domain` -- The website the story is from.
+- `URL` -- The full URL of the story.
+- `score` -- Current score of the story.
+- `submitter` -- The person that submitted the story.
+- `commentCount` -- How many comments the story has.
+- `commentsURL` -- The HN link for discussing the story.
+
+Methods:
+
+- `printDetails()` -- Prints the attributes of the story.
+
+###HackerNewsAPI
+
+Methods:
+
+- `getTopStories()` -- This returns the top 30 stories on the [front page][hn] of HN as a list of `HackerNewsStory` objects.
+- `getNewestStories()` -- This returns the 30 stories most recently submitted to HN as a list of `HackerNewsStory` objects.
+- `getBestStories()` -- This returns the top 30 stories on the "[best][best]" page of HN as a list of `HackerNewsStory` objects.
+
+`HackerNewsAPI` objects have other methods, but they're internal and you don't need to worry about them.
+
+[best]: http://news.ycombinator.com/best
+
+###HackerNewsUser
+
+Attributes:
+
+- `karma` -- The user's score on HN.
+- `name` -- The user's username.
+
+Methods:
+
+- `__init__(username)` -- Constructs a user with a username.
+- `refreshKarma()` -- Updates the user's karma.
+
+
+##Use
+
+Here's a really simple example of how to use hn-api:
+
+	import hnapi
+	
+	hn = HackerNewsAPI()
+	stories = hn.getTopStories()
+	for s in stories:
+		s.printDetails()
+		
+To break this down:
+
+- `import hnapi` imports the code you need.
+- `hn = HackerNewsAPI()` instantiates the API.
+- `stories = hn.getTopStories()` gets the 30 stories on the front page of HN and stores them in a list of HackerNewsStory objects.
+- `for s in stories: s.printDetails()` prints the details of every story in stories.
+
+##The Future
+
+That's it! I'd love to flesh hn-api out a little bit more, but this is a start. I can't wait to see if anyone uses hn-api to make some neat-o stuff based on Hacker News.
+
