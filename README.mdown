@@ -1,6 +1,6 @@
 #hn-api
 
-hn-api is a simple, ad-hoc Python API for [Hacker News][hn]. I say "ad-hoc" because it is unofficial, unauthorised and works by screen-scraping and slicing-and-dicing HTML. I say "simple" because it is in its infancy.
+hn-api is a simple, ad-hoc Python API for [Hacker News][hn]. I say "ad-hoc" because it is unofficial, unauthorised and works by screen-scraping and slicing-and-dicing HTML. I say "simple" because it's in its infancy.
 
 The guts of hn-api were part of my [hnsh][] project, but I decided to pull the API stuff out and make it its own project so that other people could use the pseudo-API I'd created.
 
@@ -25,7 +25,7 @@ Attributes:
 - `domain` -- The website the story is from.
 - `URL` -- The full URL of the story.
 - `score` -- Current score of the story.
-- `submitter` -- The person that submitted the story.
+- `submitter` -- The HN username of the person that submitted the story.
 - `commentCount` -- How many comments the story has.
 - `commentsURL` -- The HN link for discussing the story.
 
@@ -38,12 +38,13 @@ Methods:
 Methods:
 
 - `getTopStories()` -- This returns the top 30 stories on the [front page][hn] of HN as a list of `HackerNewsStory` objects.
-- `getNewestStories()` -- This returns the 30 stories most recently submitted to HN as a list of `HackerNewsStory` objects.
+- `getNewestStories()` -- This returns the 30 stories [most recently submitted][newest] to HN as a list of `HackerNewsStory` objects.
 - `getBestStories()` -- This returns the top 30 stories on the "[best][best]" page of HN as a list of `HackerNewsStory` objects.
 
 `HackerNewsAPI` objects have other methods, but they're internal and you don't need to worry about them.
 
 [best]: http://news.ycombinator.com/best
+[newest]: http://news.ycombinator.com/newest
 
 ###HackerNewsUser
 
@@ -62,7 +63,7 @@ Methods:
 
 Here's a really simple example of how to use hn-api:
 
-	import hnapi
+	from hnapi import *
 	
 	hn = HackerNewsAPI()
 	stories = hn.getTopStories()
