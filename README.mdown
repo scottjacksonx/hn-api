@@ -15,7 +15,7 @@ There are three classes:
 - `HackerNewsStory` -- The class representing a story on HN.
 - `HackerNewsUser` -- The class representing an HN user.
 
-###HackerNewsAPI
+###HackerNewsAPI Class
 
 Methods:
 
@@ -28,7 +28,7 @@ Methods:
 [best]: http://news.ycombinator.com/best
 [newest]: http://news.ycombinator.com/newest
 
-###HackerNewsStory
+###HackerNewsStory Class
 
 Attributes:
 
@@ -47,7 +47,7 @@ Methods:
 - `printDetails()` -- Prints the attributes of the story.
 
 
-###HackerNewsUser
+###HackerNewsUser Class
 
 Attributes:
 
