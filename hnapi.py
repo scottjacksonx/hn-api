@@ -37,6 +37,16 @@ or implied, of Scott Jackson.
 from BeautifulSoup import BeautifulSoup
 import urllib2
 
+
+class HNException(Exception):
+	"""
+	HNException is exactly the same as a plain Python Exception.
+	
+	The HNException class exists solely so that you can identify
+	errors that come from HN as opposed to from your application.
+	"""
+	pass
+
 class HackerNewsAPI:
 	"""
 	The class for slicing and dicing the HTML and turning it into HackerNewsStory objects.
@@ -52,7 +62,7 @@ class HackerNewsAPI:
 			f.close()
 			return source
 		except urllib2.URLError:
-			raise Exception("Error getting source from " + url + ". Your internet connection may have something funny going on, or you could be behind a proxy.")
+			raise HNException("Error getting source from " + url + ". Your internet connection may have something funny going on, or you could be behind a proxy.")
 		
 	def getStoryNumber(self, source):
 		"""
@@ -307,4 +317,4 @@ class HackerNewsUser:
 		if karma is not '':
 			self.karma = int(karma)
 		else:
-			raise Exception("Error getting karma for user " + self.name)
+			raise HNException("Error getting karma for user " + self.name)

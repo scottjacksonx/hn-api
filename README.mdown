@@ -14,6 +14,7 @@ There are three classes:
 - `HackerNewsAPI` -- The main class for turning the source code from HN into Python objects.
 - `HackerNewsStory` -- The class representing a story on HN.
 - `HackerNewsUser` -- The class representing an HN user.
+- `HNException` -- An exception raised when things go wrong getting info from HN.
 
 ###HackerNewsAPI Class
 
@@ -60,6 +61,12 @@ Methods:
 
 - `__init__(username)` -- Constructs a user with a username.
 - `refreshKarma()` -- Updates the user's karma.
+
+###HNException Class
+
+HNException is exactly the same as a plain Python [Exception][exception]. The HNException class exists solely so that you can identify errors that come from HN as opposed to from your application.
+
+[exception]: http://docs.python.org/library/exceptions.html#exceptions.Exception
 
 
 ##Use
