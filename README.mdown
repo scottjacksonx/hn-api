@@ -9,12 +9,12 @@ The guts of hn-api were part of my [hnsh][] project, but I decided to pull the A
 
 ##Documentation
 
-There are three classes:
+There are four classes in hn-api:
 
 - `HackerNewsAPI` -- The main class for turning the source code from HN into Python objects.
 - `HackerNewsStory` -- The class representing a story on HN.
 - `HackerNewsUser` -- The class representing an HN user.
-- `HNException` -- An exception raised when things go wrong getting info from HN.
+- `HNException` -- An exception raised when things go wrong while trying to get info from HN.
 
 ###HackerNewsAPI Class
 
@@ -64,7 +64,7 @@ Methods:
 
 ###HNException Class
 
-HNException is exactly the same as a plain Python [Exception][exception]. The HNException class exists solely so that you can identify errors that come from HN as opposed to from your application.
+HNException is exactly the same as a plain Python [Exception][exception]. The HNException class exists soley for identifying errors that come from trying to get data from HN.
 
 [exception]: http://docs.python.org/library/exceptions.html#exceptions.Exception
 
