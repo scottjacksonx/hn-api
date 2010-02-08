@@ -37,9 +37,9 @@ Methods:
 
 Methods:
 
-- `getTopStories()` -- This returns the top 30 stories on the [front page][hn] of HN as a list of `HackerNewsStory` objects.
-- `getNewestStories()` -- This returns the 30 stories [most recently submitted][newest] to HN as a list of `HackerNewsStory` objects.
-- `getBestStories()` -- This returns the top 30 stories on the "[best][best]" page of HN as a list of `HackerNewsStory` objects.
+- `getTopStories()` -- Returns the top 30 stories on the [front page][hn] of HN as a list of `HackerNewsStory` objects.
+- `getNewestStories()` -- Returns the 30 stories [most recently submitted][newest] to HN as a list of `HackerNewsStory` objects.
+- `getBestStories()` -- Returns the top 30 stories on the "[best][best]" page of HN as a list of `HackerNewsStory` objects.
 
 `HackerNewsAPI` objects have other methods, but they're internal and you don't need to worry about them.
 
@@ -87,5 +87,9 @@ Copyright (c) 2010 Scott Jackson. All rights reserved.
 
 ##The Future
 
-That's it! I'd love to flesh hn-api out a little bit more, but this is a start. I can't wait to see if anyone uses hn-api to make some neat-o stuff based on Hacker News.
+I'd love to flesh hn-api out a little more. If you'd like to contribute to the project, feel free to do so!
+
+###I hope hn-api is of use to someone writing a Hacker News-related application. If you use hn-api in something you write, [drop me a line][email] -- I'd love to hear about it!
+
+[email]: http://scottjackson.org/me
 
