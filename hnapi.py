@@ -290,9 +290,9 @@ class HackerNewsUser:
 		Constructor for the user class.
 		"""
 		self.name = username
-		self.refreshKarma()
 		self.userPageURL = "http://news.ycombinator.com/user?id=" + self.name
 		self.threadsPageURL = "http://news.ycombinator.com/threads?id=" + self.name
+		self.refreshKarma()
 		
 	
 	def refreshKarma(self):
@@ -300,7 +300,7 @@ class HackerNewsUser:
 		Gets the karma count of a user from the source of their 'user' page.
 		"""
 		hn = HackerNewsAPI()
-		source = hn.getSource(self.userPage)
+		source = hn.getSource(self.userPageURL)
 		karmaStart = source.find('<td valign=top>karma:</td><td>') + 30
 		karmaEnd = source.find('</td>', karmaStart)
 		self.karma = int(source[karmaStart:karmaEnd])
