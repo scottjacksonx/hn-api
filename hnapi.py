@@ -1,6 +1,6 @@
 """
 hn-api is a simple, ad-hoc Python API for Hacker News.
-===========================================================
+======================================================
 
 hn-api is released under the Simplified BSD License:
 
@@ -168,7 +168,7 @@ class HackerNewsAPI:
 		# Gives URLs, Domains and titles.
 		story_details = soup.findAll("td", {"class" : "title"}) 
 		# Gives score, submitter, comment count and comment URL.
-		story_details_2 = soup.findAll("td", {"class" : "subtext"})
+		story_other_details = soup.findAll("td", {"class" : "subtext"})
 
 		# Get story numbers.
 		storyNumbers = []
@@ -186,14 +186,14 @@ class HackerNewsAPI:
 		storyCommentURLs = []
 		storyIDs = []
 
-		for i in range(1, len(story_details), 2):
+		for i in range(1, len(story_details), 2): # Every second cell contains a story.
 			story = str(story_details[i])
 			storyURLs.append(self.getStoryURL(story))
 			storyDomains.append(self.getStoryDomain(story))
 			storyTitles.append(self.getStoryTitle(story))
 			
-		for i in range(0, len(story_details_2)):
-			story = str(story_details_2[i])
+		for s in story_other_details:
+			story = str(s)
 			storyScores.append(self.getStoryScore(story))
 			storySubmitters.append(self.getSubmitter(story))
 			storyCommentCounts.append(self.getCommentCount(story))
@@ -215,9 +215,13 @@ class HackerNewsAPI:
 			
 		return newsStories
 		
-	### BEGIN FRONT-FACING METHODS ###
-		
-		
+	##### End of internal methods. #####
+	
+	# The following methods could be turned into one method with
+	# an argument that switches which page to get stories from,
+	# but I thought it would be simplest if I kept the methods
+	# separate.
+	
 	def getTopStories(self):
 		"""
 		Gets the top 30 stories from Hacker News.
@@ -236,7 +240,7 @@ class HackerNewsAPI:
 		
 	def getBestStories(self):
 		"""
-		Gets the 30 best stories from Hacker News.
+		Gets the 30 "best" stories from Hacker News.
 		"""
 		source = self.getSource("http://news.ycombinator.com/best")
 		stories  = self.getStories(source)
@@ -276,32 +280,27 @@ class HackerNewsUser:
 	"""
 	A class representing a user on Hacker News.
 	"""
-	karma = -1000
-	name = ""
+	karma = -10000	# Default value. I don't think anyone really has -10000 karma.
+	name = ""	# The user's HN username.
+	userPageURL = ""	# The URL of the user's 'user' page.
+	threadsPageURL = ""	# The URL of the user's 'threads' page.
 	
 	def __init__(self, username):
 		"""
-		Constructor.
+		Constructor for the user class.
 		"""
 		self.name = username
 		self.refreshKarma()
+		self.userPageURL = "http://news.ycombinator.com/user?id=" + self.name
+		self.threadsPageURL = "http://news.ycombinator.com/threads?id=" + self.name
 		
 	
 	def refreshKarma(self):
 		"""
-		Gets the karma count of a user from the source of their 'threads' page.
+		Gets the karma count of a user from the source of their 'user' page.
 		"""
 		hn = HackerNewsAPI()
-		url = "http://news.ycombinator.com/user?id=" + self.name
-		source = hn.getSource(url)
+		source = hn.getSource(self.userPage)
 		karmaStart = source.find('<td valign=top>karma:</td><td>') + 30
 		karmaEnd = source.find('</td>', karmaStart)
 		self.karma = int(source[karmaStart:karmaEnd])
-
-hn = HackerNewsAPI()
-stories = hn.getNewestStories()
-
-for s in stories:
-	s.printDetails()
-
-
