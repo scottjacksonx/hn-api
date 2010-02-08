@@ -23,7 +23,7 @@ Methods:
 - `getNewestStories()` -- Returns 30 stories [most recently submitted][newest] to HN as a list of `HackerNewsStory` objects.
 - `getBestStories()` -- Returns the 30 stories on the "[best][best]" page of HN as a list of `HackerNewsStory` objects.
 
-`HackerNewsAPI` objects have other methods, but they're internal and you don't need to worry about them.
+`HackerNewsAPI` objects have other methods, but they're internal and you don't need to deal with them to get stories from HN.
 
 [best]: http://news.ycombinator.com/best
 [newest]: http://news.ycombinator.com/newest
