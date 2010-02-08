@@ -72,7 +72,7 @@ Here's a really simple example of how to use hn-api:
 		
 To break this down:
 
-- `from hnapi import *` imports the code you need.
+- `from hnapi import *` imports the code you need from hnapi.py.
 - `hn = HackerNewsAPI()` instantiates the API.
 - `stories = hn.getTopStories()` gets the 30 stories on the front page of HN and stores them in a list of HackerNewsStory objects.
 - `for s in stories: s.printDetails()` prints the details of every story on the front page of HN.
