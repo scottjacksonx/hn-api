@@ -91,7 +91,7 @@ Copyright (c) 2010 Scott Jackson. All rights reserved.
 
 I'd love to flesh hn-api out a little more. If you'd like to contribute to the project, feel free to do so!
 
-###I hope hn-api is of use to someone writing a Hacker News-related application. If you use hn-api in something you write, [drop me a line][contact] -- I'd love to hear about it!
+###I hope that hn-api is of use to someone writing a Hacker News-related application. If you use hn-api in something you write, [drop me a line][contact] -- I'd love to hear about it!
 
 [contact]: http://scottjackson.org/me
 

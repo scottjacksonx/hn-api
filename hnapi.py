@@ -245,7 +245,6 @@ class HackerNewsAPI:
 		source = self.getSource("http://news.ycombinator.com/best")
 		stories  = self.getStories(source)
 		return stories
-
 		
 
 class HackerNewsStory:
@@ -275,6 +274,7 @@ class HackerNewsStory:
 		print "'discuss' URL: " + self.commentsURL
 		print "HN ID: " + str(self.id)
 		print " "
+
 
 class HackerNewsUser:
 	"""
