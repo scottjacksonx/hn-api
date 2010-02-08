@@ -5,7 +5,7 @@ hn-api is a simple, ad-hoc Python API for [Hacker News][hn]. I say "ad-hoc" beca
 The guts of hn-api were part of my [hnsh][] project, but I decided to pull the API stuff out and make it its own project so that other people could use the pseudo-API I'd created.
 
 [hn]: http://news.ycombinator.com "Hacker News"
-[hnsh]: http://github.com/scottjacksonx/hnsh/ "Hacker News Shell - browse HN from the command-line"
+[hnsh]: http://github.com/scottjacksonx/hnsh/ "hacker news shell - browse HN from the command-line"
 
 ##Documentation
 
@@ -14,6 +14,19 @@ There are three classes:
 - `HackerNewsAPI` -- The main class for turning the source code from HN into Python objects.
 - `HackerNewsStory` -- The class representing a story on HN.
 - `HackerNewsUser` -- The class representing an HN user.
+
+###HackerNewsAPI
+
+Methods:
+
+- `getTopStories()` -- Returns the 30 stories on the [front page][hn] of HN as a list of `HackerNewsStory` objects.
+- `getNewestStories()` -- Returns 30 stories [most recently submitted][newest] to HN as a list of `HackerNewsStory` objects.
+- `getBestStories()` -- Returns the 30 stories on the "[best][best]" page of HN as a list of `HackerNewsStory` objects.
+
+`HackerNewsAPI` objects have other methods, but they're internal and you don't need to worry about them.
+
+[best]: http://news.ycombinator.com/best
+[newest]: http://news.ycombinator.com/newest
 
 ###HackerNewsStory
 
@@ -33,18 +46,6 @@ Methods:
 
 - `printDetails()` -- Prints the attributes of the story.
 
-###HackerNewsAPI
-
-Methods:
-
-- `getTopStories()` -- Returns the top 30 stories on the [front page][hn] of HN as a list of `HackerNewsStory` objects.
-- `getNewestStories()` -- Returns the 30 stories [most recently submitted][newest] to HN as a list of `HackerNewsStory` objects.
-- `getBestStories()` -- Returns the top 30 stories on the "[best][best]" page of HN as a list of `HackerNewsStory` objects.
-
-`HackerNewsAPI` objects have other methods, but they're internal and you don't need to worry about them.
-
-[best]: http://news.ycombinator.com/best
-[newest]: http://news.ycombinator.com/newest
 
 ###HackerNewsUser
 
@@ -78,7 +79,6 @@ To break this down:
 - `hn = HackerNewsAPI()` instantiates the API.
 - `stories = hn.getTopStories()` gets the 30 stories on the front page of HN and stores them in a list of HackerNewsStory objects.
 - `for s in stories: s.printDetails()` prints the details of every story on the front page of HN.
-
 
 ##Licensing
 
