@@ -52,6 +52,8 @@ Attributes:
 
 - `karma` -- The user's score on HN.
 - `name` -- The user's username.
+- `userPageURL` -- The URL of the user's 'user' page.
+- `threadsPageURL` -- The URL of the user's 'threads' page.
 
 Methods:
 
