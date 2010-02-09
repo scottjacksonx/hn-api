@@ -4,6 +4,8 @@ hn-api is a simple, ad-hoc Python API for [Hacker News][hn]. I say "ad-hoc" beca
 
 The guts of hn-api were part of my [hnsh][] project, but I decided to pull the API stuff out and make it its own project so that other people could use the pseudo-API I'd created.
 
+If you get stories from HN too often, HN will ban your IP address. So be gentle -- remember, hn-api is an *unofficial* API.
+
 [hn]: http://news.ycombinator.com "Hacker News"
 [hnsh]: http://github.com/scottjacksonx/hnsh/ "hacker news shell - browse HN from the command-line"
 
