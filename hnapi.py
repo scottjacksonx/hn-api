@@ -148,7 +148,6 @@ class HackerNewsAPI:
 			return 0
 		else:
 			commentCountString = commentCountString.split(' ')[0]
-			print commentCountString
 			return int(commentCountString)
 			
 	def getHNID(self, source):
