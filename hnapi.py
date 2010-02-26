@@ -141,18 +141,21 @@ class HackerNewsAPI:
 		commentStart = source.find('item?id=')
 		commentCountStart = source.find('>', commentStart) + 1
 		commentEnd = source.find('</a>', commentStart)
-		commentCount = source[commentCountStart:commentEnd]
-		if commentCount == "discuss":
+		commentCountString = source[commentCountStart:commentEnd]
+		if commentCountString == "discuss":
+			return 0
+		elif commentCountString == "":
 			return 0
 		else:
-			space = commentCount.find(' ')
-			return int(commentCount[:space])
+			commentCountString = commentCountString.split(' ')[0]
+			print commentCountString
+			return int(commentCountString)
 			
 	def getHNID(self, source):
 		"""
 		Gets the Hacker News ID of a story.
 		"""
-		urlStart = source.find('item?id=') + 8
+		urlStart = source.find('score_') + 6
 		urlEnd = source.find('"', urlStart)
 		return int(source[urlStart:urlEnd])
 		
