@@ -51,6 +51,7 @@ class HackerNewsAPI:
 	"""
 	The class for slicing and dicing the HTML and turning it into HackerNewsStory objects.
 	"""
+	numberOfStoriesOnFrontPage = 0
 	
 	def getSource(self, url):
 		"""
@@ -169,10 +170,10 @@ class HackerNewsAPI:
 		"""
 		Looks at source, makes stories from it, returns the stories.
 		"""
-		
+		self.numberOfStoriesOnFrontPage = source.count("span id=score")
 		# Create the empty stories.
 		newsStories = []
-		for i in range(0,30):
+		for i in range(0, self.numberOfStoriesOnFrontPage):
 			story = HackerNewsStory()
 			newsStories.append(story)
 		
@@ -214,7 +215,7 @@ class HackerNewsAPI:
 			
 		
 		# Associate the values with our newsStories.		
-		for i in range(0, 30):
+		for i in range(0, self.numberOfStoriesOnFrontPage):
 			newsStories[i].number = storyNumbers[i]
 			newsStories[i].URL = storyURLs[i]
 			newsStories[i].domain = storyDomains[i]
@@ -236,7 +237,7 @@ class HackerNewsAPI:
 	
 	def getTopStories(self):
 		"""
-		Gets the top 30 stories from Hacker News.
+		Gets the top stories from Hacker News.
 		"""
 		source = self.getSource("http://news.ycombinator.com")
 		stories  = self.getStories(source)
@@ -244,7 +245,7 @@ class HackerNewsAPI:
 		
 	def getNewestStories(self):
 		"""
-		Gets the 30 newest stories from Hacker News.
+		Gets the newest stories from Hacker News.
 		"""
 		source = self.getSource("http://news.ycombinator.com/newest")
 		stories  = self.getStories(source)
@@ -252,7 +253,7 @@ class HackerNewsAPI:
 		
 	def getBestStories(self):
 		"""
-		Gets the 30 "best" stories from Hacker News.
+		Gets the "best" stories from Hacker News.
 		"""
 		source = self.getSource("http://news.ycombinator.com/best")
 		stories  = self.getStories(source)
